@@ -78,8 +78,3 @@ test:
 #   production:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
-production:
-  <<: *default
-  database: thinkubator_production
-  username: thinkubator
-  password: <%= ENV['THINKUBATOR_DATABASE_PASSWORD'] %>
