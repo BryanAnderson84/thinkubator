@@ -50,6 +50,6 @@ class SuggestionsController < ApplicationController
   end
 
   def suggestion_params
-    params.require(:suggestion).permit(:suggestion)
+    params.require(:suggestion).permit(:content, :contribute, :user_id)
   end
 end
