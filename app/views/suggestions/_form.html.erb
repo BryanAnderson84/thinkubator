@@ -1,0 +1,11 @@
+<%= form_for [@idea, @suggestion] do |f| %>
+
+<br>
+  <%= f.label :content %>
+  <%= f.text_field :comment %>
+<br>
+  <%= f.label :contribute %>
+  <%= f.check_box :contribute %>
+<br>
+  <%= f.submit %>
+<%end%>
