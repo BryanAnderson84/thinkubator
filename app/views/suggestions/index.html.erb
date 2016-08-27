@@ -1,18 +1,2 @@
 <h2><%= @idea.title %></h2>
 <p><%= @idea.user_id %></p>
-<h4><%= @idea.description %></h4>
-
-
-
-<% if @suggestion.any? %>
-  <ul>
-    <% @suggestion.each do |suggestion| %>
-    <li class='suggestion-info-text'><%= suggestion.info%> -
-    <%= link_to 'Show', idea_suggestion_path(@idea, suggrstion) %></li>
-    <%end%>
-  </ul>
-<%else%>
-  <p>No suggestions have been submitted. Click the link below to submit a suggestion!</p>
-<%end%>
-
-<% link_to 'Add Suggestion', new_idea_suggestion_path(@idea)%> -->

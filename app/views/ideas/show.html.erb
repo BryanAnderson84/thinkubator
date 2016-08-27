@@ -3,20 +3,20 @@
 <h4> <%= @idea.description %> </h4>
 
 <h5> <ul style="list-style: none;"> Suggestions: </h5>
-      <% @idea.suggestions.each do |suggestion| %>
-          <li> By: <%= suggestion.user.first_name %> Created: <%= suggestion.created_at %>
-            <%= link_to suggestion.content, idea_suggestion_path(@idea, suggestion) %>
-          </li>
+  <% @idea.suggestions.each do |suggestion| %>
+      <li> By: <%= suggestion.user.first_name %>
+        <%= link_to suggestion.content, idea_suggestion_path(@idea, suggestion) %>
+      </li>
+    <br>
+      <% if (current_user.id == @idea.user_id || suggestion.user_id) %>
+        <%= link_to 'Delete Suggestion', idea_suggestion_path(@idea, suggestion),
+        method: :delete, class: 'btn-flat disabled' %>
+      <%end%>
 
-        <br>
-          <% if (current_user.id == @idea.user_id || suggestion.user_id) %>
-            <%= link_to 'Delete Suggestion', idea_suggestion_path(@idea, suggestion),
-            method: :delete, class: 'btn-flat disabled' %>
-          <%end%>
-    </ul></h4>
+    </ul></h4><br>
     <% end %>
-<h5> <%= link_to 'Add Suggestion', new_idea_suggestion_path(@idea) %> </h5>
-<h5> <% if current_user == @idea.user %>
-     <%= link_to 'Create Assignment', new_idea_assignment_path(@idea) %> |
-     <%= link_to 'Edit Idea', edit_idea_path(@idea) %>
-     <% end %> </h5>
+    <%= link_to 'Add Suggestion', new_idea_suggestion_path(@idea), class: 'btn' %>
+    <% if current_user == @idea.user %>
+    <%= link_to 'Create Assignment', new_idea_assignment_path(@idea), class: 'btn' %> |
+    <%= link_to 'Edit Idea', edit_idea_path(@idea), class: 'btn' %>
+    <% end %>

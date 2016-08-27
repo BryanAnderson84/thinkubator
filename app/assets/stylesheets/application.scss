@@ -2,8 +2,31 @@
 
 .btn-large {
   background-color: black;
+  color: white;
+}
+
+.btn {
+  background-color: black;
+  color: white;
 }
 
 .nav-wrapper {
   background-color: black;
+  padding-left: 10px;
+}
+
+body {
+  background-color: #dcdfd3;
+}
+
+.image {
+   position: relative;
+   width: 100%;
+}
+
+h1 {
+   position: absolute;
+   top: 200px;
+   left: 0;
+   width: 100%;
 }
