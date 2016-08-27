@@ -13,7 +13,6 @@
     <p>There are no current Assignments!</p>
 <% end %>
 
-<h5> <% if current_user == @idea.user %>
+  <% if current_user == @idea.user %>
   <%= link_to "New Assignment", new_idea_assignment_path(@idea), class: "btn" %>
   <% end %>
-</h5>

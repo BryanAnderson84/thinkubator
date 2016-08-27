@@ -6,5 +6,5 @@
 
 <h4> <%= @suggestion.content %> </h4>
 
-<%= link_to 'Back to Idea', idea_path(@idea) %> |
-<%= link_to 'Edit Suggestion', edit_idea_suggestion_path(@idea, @suggestion) %>
+<%= link_to 'Back to Idea', idea_path(@idea), class: 'btn' %>
+<%= link_to 'Edit Suggestion', edit_idea_suggestion_path(@idea, @suggestion), class: 'btn' %>

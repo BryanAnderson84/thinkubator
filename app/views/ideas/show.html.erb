@@ -8,7 +8,7 @@
         <%= link_to suggestion.content, idea_suggestion_path(@idea, suggestion) %>
       </li>
     <br>
-      <% if (current_user.id == @idea.user_id || suggestion.user_id) %>
+      <% if (current_user == @idea.user || current_user == suggestion.user) %>
         <%= link_to 'Delete Suggestion', idea_suggestion_path(@idea, suggestion),
         method: :delete, class: 'btn-flat disabled' %>
       <%end%>
@@ -17,6 +17,6 @@
     <% end %>
     <%= link_to 'Add Suggestion', new_idea_suggestion_path(@idea), class: 'btn' %>
     <% if current_user == @idea.user %>
-    <%= link_to 'Create Assignment', new_idea_assignment_path(@idea), class: 'btn' %> |
+    <%= link_to 'Create Assignment', new_idea_assignment_path(@idea), class: 'btn' %>
     <%= link_to 'Edit Idea', edit_idea_path(@idea), class: 'btn' %>
     <% end %>
