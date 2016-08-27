@@ -1,6 +1,12 @@
-<h1>Assignments#show</h1>
-<p>Find me in app/views/assignments/show.html.erb</p>
+<h3><%= @assignment.title %></h3>
+<h5><%= @assignment.description %></h5>
 
-<h3><%= assignment.title %></h3>
-<h5><%= assignment.description %></h5>
-<p><%= assignment.response %></p>
+<%= form_for [@idea, @assignment] do |f| %>
+<%= f.label :response  %>
+<%= f.text_area :response  %>
+<br />
+<%= f.label :completed %>
+<%= f.check_box :completed %>
+<br />
+<%= f.submit "Submit", class: "btn-large" %>
+<% end %>

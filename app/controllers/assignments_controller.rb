@@ -1,10 +1,13 @@
 class AssignmentsController < ApplicationController
+  before_action require: :user
+  before_action :idea
+  before_action :assignment, only: [:show, :edit, :update, :destroy]
+
   def index
-    @assignment = @user.assignments
+    @assignments = @idea.assignments
   end
 
   def show
-    @assignment = Assignment.find(params[:id])
   end
 
   def new
@@ -13,21 +16,21 @@ class AssignmentsController < ApplicationController
 
   def create
     @assignment = Assignment.new(assignment_params)
+    @assignment[:idea_id] = params[:idea_id]
     if @assignment.save
-      redirect_to idea_assignments_path(@assignment)
+      redirect_to idea_assignments_path(@idea)
     else
       render :new
     end
   end
 
   def edit
-    @assignment = @current_user.assignment
+    @assignment = @idea.assignment
   end
 
   def update
-    @assignment = @current_user.assignment
-    if @assignment.update
-      redirect_to idea_assignment_path(@assignment)
+    if @assignment.update(assignment_params)
+      redirect_to idea_assignments_path(@idea)
     else
       render :edit
     end
@@ -35,12 +38,20 @@ class AssignmentsController < ApplicationController
 
   def destroy
     @assignment.destroy
-    redirect_to idea_assignments_path(@assignment)
+    redirect_to idea_assignments_path(@idea)
   end
 
   private
 
     def assignment_params
-      params.require(:assignment).permit(:title, :description, :response, :completed)
+      params.require(:assignment).permit(:title, :description, :response, :completed, :user_id)
+    end
+
+    def assignment
+      @assignment = Assignment.find(params[:id])
+    end
+
+    def idea
+      @idea = Idea.find(params[:idea_id])
     end
 end

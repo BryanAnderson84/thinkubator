@@ -2,8 +2,7 @@ class SuggestionsController < ApplicationController
   before_action require: :user
   before_action :idea
   before_action :suggestion, only: [:show, :edit, :update, :destroy]
-
-
+  
   def index
     @suggestion = @idea.suggestions
   end

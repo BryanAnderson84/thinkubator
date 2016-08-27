@@ -11,3 +11,7 @@
       </ul></h4>
 
 <h5> <%= link_to 'Add Suggestion', new_idea_suggestion_path(@idea) %> </h5>
+<h5> <% if current_user == @idea.user %>
+     <%= link_to 'Create Assignment', new_idea_assignment_path(@idea) %> |
+     <%= link_to 'Edit Idea', edit_idea_path(@idea) %>
+     <% end %> </h5>

@@ -1,8 +1,19 @@
-<h1>Assignments#index</h1>
-<p>Find me in app/views/assignments/index.html.erb</p>
+<h2>All Assignments</h2>
 
+<% if @assignments.any? %>
 
-<h3>List all assignments here</h3>
+  <h4><ul style="list-style: none;">
+    <% @assignments.each do |assignment| %>
+      <li>-
+        <%= link_to assignment.title, idea_assignment_path(@idea, assignment) %>
+      </li>
+    <% end %>
+  </ul></h4>
+  <% else %>
+    <p>There are no current Assignments!</p>
+<% end %>
 
-
-<%= link_to "New Assignment" new_idea_assignment_path(@idea), class: btn %>
+<h5> <% if current_user == @idea.user %>
+  <%= link_to "New Assignment", new_idea_assignment_path(@idea), class: "btn" %>
+  <% end %>
+</h5>
