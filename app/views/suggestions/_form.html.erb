@@ -1,10 +1,14 @@
 <%= form_for [@idea, @suggestion] do |f| %>
 <br>
+<div class='input-field'>
   <%= f.label :content, "Enter suggestion" %>
   <%= f.text_field :content %>
+</div>
 <br>
-  <%= f.label :contribute %>
-  <%= f.check_box :contribute, default: true %>
+  <div class='input-field'>
+  <%= f.check_box :contribute %>
+  <%= f.label :contribute, id: 'contribute' %>
+</div>
   <%= f.hidden_field :user_id, value: current_user.id %>
 <br>
   <%= f.submit "Submit", class: "btn-large" %>
