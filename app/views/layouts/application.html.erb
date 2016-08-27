@@ -10,8 +10,7 @@
   </head>
 
   <body>
-    <nav>
-      <div class="container">
+        <nav>
         <div class="nav-wrapper">
           <a href="ideas_path" class="brand-logo">Home</a>
           <ul id="nav-mobile" class="right hide-on-med-and-down">
@@ -19,8 +18,9 @@
             <li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
           </ul>
         </div>
-      </nav>
+    </nav>
+<div class="container">
     <%= yield %>
-    </div>
+  </div>
   </body>
 </html>

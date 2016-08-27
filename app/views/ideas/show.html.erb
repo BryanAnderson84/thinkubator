@@ -1,2 +1,13 @@
-<h1>Ideas#show</h1>
-<p>Find me in app/views/ideas/show.html.erb</p>
+<h2> <%= @idea.title %> </h2>
+<p> <strong> By: <%= @idea.user.first_name %> <%= @idea.user.last_name %> </strong> </p>
+<h4> <%= @idea.description %> </h4>
+
+<h5> <ul style="list-style: none;"> Suggestions: </h5>
+      <% @idea.suggestions.each do |suggestion| %>
+          <li> By: <%= suggestion.user.first_name %> Created: <%= suggestion.created_at %>
+            <%= link_to suggestion.content, idea_suggestion_path(@idea, suggestion) %>
+          </li>
+        <% end %>
+      </ul></h4>
+
+<h5> <%= link_to 'Add Suggestion', new_idea_suggestion_path(@idea) %> </h5>

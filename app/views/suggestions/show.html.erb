@@ -1,17 +1,10 @@
-<div class="container">
-	<div class="row">
-		<%= link_to 'Home', root_path %>
-		<div class="col s8 offset-s1">
-			<h2><%= @post.title %></h2>
-			<h4> class="center-align"><%= @idea.description %></h4>
-			<p><%= @post.current_user.name %></p>
-		</div>
-	</div>
+<div class="row">
+	<h2><%= @idea.title %></h2>
+	<h4><%= @idea.description %></h4>
+	<p><%= current_user.first_name %> <%= current_user.last_name %></p>
 </div>
-		<hr>
-		<p>Suggestions:</p>
 
+<h4> <%= @suggestion.content %> </h4>
 
-<%= render(partial: 'form') %>
-
-<%= link_to 'Back', ideas_path =>
+<%= link_to 'Back to Idea', idea_path(@idea) %> |
+<%= link_to 'Edit Suggestion', edit_idea_suggestion_path(@idea, @suggestion) %>

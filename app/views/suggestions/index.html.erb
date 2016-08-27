@@ -1,17 +1,18 @@
-<h2><%= @idea.title %></h2>
+<h1>XXX</h1>
+<!-- <h2><%= @idea.title %></h2>
 <h4><%= @idea.description %></h4>
-<p><%= @post.current_user.name %></p>
+<p><%= @idea.user.first_name %></p>
 
 
 <% if @suggestion.any? %>
   <ul>
     <% @suggestion.each do |suggestion| %>
     <li class='suggestion-info-text'><%= suggestion.info%> -
-    <%= link_to 'Show', idea_suggestion_path(@idea, comment) %></li>
+    <%= link_to 'Show', idea_suggestion_path(@idea, suggestion) %></li>
     <%end%>
   </ul>
 <%else%>
-  <h4>No suggestions have been submitted. Click the link below to submit a suggestion</h4>
+  <p>No suggestions have been submitted. Click the link below to submit a suggestion!</p>
 <%end%>
 
-<% link_to 'Add Suggestion', new_idea_suggestion_path(@idea)%>
+<% link_to 'Add Suggestion', new_idea_suggestion_path(@idea)%> -->

@@ -1,7 +1,7 @@
 class SuggestionsController < ApplicationController
   before_action require: :user
   before_action :idea
-  before_action :ocmments, only: [:show, :edit, :update, :destroy]
+  before_action :suggestion, only: [:show, :edit, :update, :destroy]
 
 
   def index
@@ -16,9 +16,9 @@ class SuggestionsController < ApplicationController
   end
 
   def create
-    @suggestion = Suggestion.new(comment_params)
+    @suggestion = Suggestion.new(suggestion_params)
     @suggestion[:idea_id] = params[:idea_id]
-    if @comment.save
+    if @suggestion.save
       redirect_to idea_path(@idea)
     else
       render :new
@@ -30,7 +30,7 @@ class SuggestionsController < ApplicationController
 
   def update
     if @suggestion.update(suggestion_params)
-      redirect_to idea_path
+      redirect_to idea_suggestion_path(@idea, @suggestion)
     else
       render :edit
     end
@@ -43,8 +43,8 @@ class SuggestionsController < ApplicationController
 
   private
 
-  def suggestions
-    @suggestion = suggestion.find(params[:id])
+  def suggestion
+    @suggestion = Suggestion.find(params[:id])
   end
 
   def idea
@@ -52,6 +52,6 @@ class SuggestionsController < ApplicationController
   end
 
   def suggestion_params
-    params.require(:suggestion).permit(:suggestion)
-  end 
+    params.require(:suggestion).permit(:content, :contribute, :user_id)
+  end
 end
