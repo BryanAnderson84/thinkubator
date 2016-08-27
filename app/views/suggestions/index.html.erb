@@ -1,14 +1,14 @@
-<h1>XXX</h1>
-<!-- <h2><%= @idea.title %></h2>
+<h2><%= @idea.title %></h2>
+<p><%= @idea.user_id %></p>
 <h4><%= @idea.description %></h4>
-<p><%= @idea.user.first_name %></p>
+
 
 
 <% if @suggestion.any? %>
   <ul>
     <% @suggestion.each do |suggestion| %>
     <li class='suggestion-info-text'><%= suggestion.info%> -
-    <%= link_to 'Show', idea_suggestion_path(@idea, suggestion) %></li>
+    <%= link_to 'Show', idea_suggestion_path(@idea, suggrstion) %></li>
     <%end%>
   </ul>
 <%else%>

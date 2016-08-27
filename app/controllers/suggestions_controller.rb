@@ -2,7 +2,6 @@ class SuggestionsController < ApplicationController
   before_action require: :user
   before_action :idea
   before_action :suggestion, only: [:show, :edit, :update, :destroy]
-  
   def index
     @suggestion = @idea.suggestions
   end
@@ -51,6 +50,6 @@ class SuggestionsController < ApplicationController
   end
 
   def suggestion_params
-    params.require(:suggestion).permit(:content, :contribute, :user_id)
+    params.require(:suggestion).permit(:suggestion)
   end
 end
